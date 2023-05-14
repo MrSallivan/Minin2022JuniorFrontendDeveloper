@@ -100,6 +100,7 @@ body {
 .checkbox-form__checkbox + label {
 	display: inline-flex;
 	align-items: center;
+	-webkit-user-select: none;
 	user-select: none;
 }
 .checkbox-form__checkbox + label::before {
@@ -147,4 +148,7 @@ body {
 }
 .task-item__delete-button {
 	padding: 5px;
+}
+.clicked{
+	background-color: rgb(194, 207, 235);
 }
