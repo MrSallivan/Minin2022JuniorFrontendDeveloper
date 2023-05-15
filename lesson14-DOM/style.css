@@ -16,6 +16,7 @@ body {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	background-color: #7e7777;
 }
 #tasks {
 	display: flex;
@@ -65,6 +66,7 @@ body {
 	border: 2px solid var(--text-color);
 }
 .create-task-block__button {
+	
 	padding: 5px;
 	font-size: 1.5rem;
 }
@@ -147,8 +149,30 @@ body {
 	font-size: 1.5rem;
 }
 .task-item__delete-button {
+	position: relative;
 	padding: 5px;
 }
 .clicked{
 	background-color: rgb(194, 207, 235);
+}
+.tooltip{
+	position: absolute;
+	left: -50%;
+	bottom: calc(100% + 5px);
+	margin: 0 auto;
+
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	font-size: 1.5rem;
+	line-height: 2rem;
+	width: 200px;
+	border: 2px solid var(--default-border-color);
+}
+.error-message-block {
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+	font-size: 1.5rem;
+	line-height: 2rem;
+	color: var(--error-color);
 }
