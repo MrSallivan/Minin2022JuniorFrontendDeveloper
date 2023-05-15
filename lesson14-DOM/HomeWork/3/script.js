@@ -1,7 +1,7 @@
 const tasks = [
 	{
 		id: '1138465078061',
-		completed: false,
+		completed: true,
 		text: 'Посмотреть новый урок по JavaScript',
 	},
 	{
@@ -95,8 +95,6 @@ const createTask = (taskId, taskText, completed) => {
 	return taskItem
 }
 
-
-
 form.addEventListener('submit', (e) => {
 	e.preventDefault()
 	const inputEl = document.querySelector('.create-task-block__input')
@@ -111,8 +109,6 @@ form.addEventListener('submit', (e) => {
 	tasksList.append(createdTask)
 	
 })
-
-
 
 tasks.forEach((task) => {
 	const createdTask = createTask(task.id, task.text, task.completed)
