@@ -110,20 +110,21 @@ form.addEventListener('submit', (e) => {
 	errorSpanEl.className = 'error-message-block'
 	errorSpanEl.textContent = 'Название задачи не должно быть пустым'
 
-	const isTaskHas = tasks.includes(task)
-	console.log(isTaskHas);
+
+	const isPairTask = tasks.map(task => task.text.includes(valueText)).includes(true)
 
 	if (valueText == '') {
 		document.body.append(errorSpanEl)
-	} else if (false) {
-
+	} else if (isPairTask) {
+		document.body.append(errorSpanEl)
+		errorSpanEl.textContent = 'Задача с таким названием уже существует.'
 	} else {
+		const spanError = document.querySelector('.error-message-block')
+		spanError.remove()
 		tasks.push(task)
 		const createdTask = createTask(task.id, task.text, task.completed)
 		tasksList.append(createdTask)
 	}
-
-
 
 
 })
