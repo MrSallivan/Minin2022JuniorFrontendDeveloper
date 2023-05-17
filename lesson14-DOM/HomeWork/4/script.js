@@ -113,18 +113,22 @@ form.addEventListener('submit', (e) => {
 
 	const isPairTask = tasks.map(task => task.text.includes(valueText)).includes(true)
 
+	const spanError = document.querySelector('.error-message-block')
+	if (spanError) {
+		spanError.remove()
+	}
+
 	if (valueText == '') {
 		document.body.append(errorSpanEl)
 	} else if (isPairTask) {
 		document.body.append(errorSpanEl)
 		errorSpanEl.textContent = 'Задача с таким названием уже существует.'
 	} else {
-		const spanError = document.querySelector('.error-message-block')
-		spanError.remove()
 		tasks.push(task)
 		const createdTask = createTask(task.id, task.text, task.completed)
 		tasksList.append(createdTask)
 	}
+
 
 
 })
