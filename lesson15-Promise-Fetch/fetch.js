@@ -12,10 +12,20 @@ const createLiEl = (text) => {
 	crLi.append(crA)
 	container.append(crLi)
 }
-const loader = ()
+
+const loader = (el) => {
+	const isHidden = el.hasAttribute('hidden')
+	if (isHidden) {
+		el.removeAttribute('hidden')
+	} else {
+		el.setAttribute('hidden', '')
+	}
+
+}
 
 todos
 	.then((response) => {
+		loader(span)
 		if (!response.ok) {
 			throw new Error(`Где то ошибка!`)
 		}
@@ -28,5 +38,6 @@ todos
 	})
 	.catch(error => console.log(error))
 	.finally(() => {
+		loader(span)
 		console.log('Данные полученны с сервера');
 	})
