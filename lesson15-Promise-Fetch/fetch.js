@@ -11,6 +11,7 @@ const createLiEl = (text) => {
 	crA.textContent = text
 	crLi.append(crA)
 	container.append(crLi)
+	return crLi
 }
 
 const loader = (el) => {
@@ -41,3 +42,4 @@ todos
 		loader(span)
 		console.log('Данные полученны с сервера');
 	})
+	
