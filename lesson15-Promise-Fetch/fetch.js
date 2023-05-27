@@ -1,48 +1,32 @@
-const TODOS_URL = `https://jsonplaceholder.typicode.com/todos`
-const rezult = fetch(TODOS_URL, { method: 'GET' })
+const todoUrl = `https://jsonplaceholder.typicode.com/todos`
+const todos = fetch(todoUrl, { method: 'GET' })
 
-const toggleLoader = ()=>{
-	const spanLoad = document.querySelector('#loader')
-	const isHidden = spanLoad.hasAttribute('hidden')
-	if(isHidden){
-		spanLoad.removeAttribute('hidden')
-	} else{
-		spanLoad.setAttribute('hidden', '')
-	}
+const container = document.querySelector('#data-container')
+const span = document.querySelector('#loader')
+
+const createLiEl = (text) => {
+	const crLi = document.createElement('li')
+	const crA = document.createElement('a')
+	crA.href = '#'
+	crA.textContent = text
+	crLi.append(crA)
+	container.append(crLi)
 }
+const loader = ()
 
-
-const createTodoEl = (text)=>{
-	const todoEl = document.createElement('li')
-	const todoEla = document.createElement('a')
-	todoEla.href = `#`
-	todoEla.textContent = text
-	todoEl.append(todoEla)
-	return todoEl
-}
-const dataContainer = document.querySelector(`#data-container`)
-
-const getAllTodos = () => {
-
-	toggleLoader()
-	rezult
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error('Хз что за адрес')
-			}
-			return response.json()
-		})
-		.then((data) => {
-			data.forEach((todo) => {
-				const todoHTML = createTodoEl(todo.title)
-				dataContainer.append(todoHTML)
-			});
-		})
-		.catch(error => console.log(error))
-		.finally(()=>{
-			toggleLoader()
-		})
-}
-
-
-getAllTodos()
+todos
+	.then((response) => {
+		if (!response.ok) {
+			throw new Error(`Где то ошибка!`)
+		}
+		return response.json()
+	})
+	.then((data) => {
+		data.forEach(element => {
+			createLiEl(element.title)
+		});
+	})
+	.catch(error => console.log(error))
+	.finally(() => {
+		console.log('Данные полученны с сервера');
+	})
