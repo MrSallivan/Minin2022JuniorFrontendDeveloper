@@ -4,6 +4,7 @@
     --text-color: #444;
     --circle-background: #8FD4C1;
     --border-color: #ffffff;
+	 --default-image-size: 200px;
 }
 
 body {
