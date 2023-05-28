@@ -72,4 +72,4 @@ function renderPost(postId) {
 		})
 }
 
-renderPost(5)
+renderPost(24)
