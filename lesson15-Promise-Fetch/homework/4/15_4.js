@@ -61,12 +61,12 @@ function renderPost(postId) {
 		.then((data) => {
 			const postPromise = data[0]
 			const comentPromise = data[1]
-			createPost(postPromise.title, postPromise.body)
+			createPost(postPromise.title, postPromise.body) 
 			comentPromise.forEach(element => {
 				creatComment(element.email, element.body)
 			})
 		})
-		.catch(error => console.log('error', error))
+		.catch(error => console.log('error', error)) 
 		.finally(()=>{
 			loader()
 		})
