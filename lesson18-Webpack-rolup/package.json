@@ -13,6 +13,10 @@
   "author": "Alex Nikolaemko @aka MrSallivan",
   "license": "ISC",
   "devDependencies": {
-    "@rollup/plugin-babel": "^6.0.3"
+    "@rollup/plugin-babel": "^6.0.3",
+    "rollup-plugin-img": "^1.1.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^2.0.2",
+    "rollup-plugin-styles": "^4.0.0"
   }
 }
