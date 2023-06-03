@@ -19,7 +19,7 @@ export default class App {
 	}
 
 	run() {
-		
+
 
 		document.body.append(this.#donateForm.render())
 		document.body.append(this.#donateList.render())

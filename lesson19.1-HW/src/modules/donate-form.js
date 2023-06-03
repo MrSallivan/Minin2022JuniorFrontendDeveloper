@@ -1,7 +1,21 @@
 export class DonateForm {
 	#containerForm
+	#minDonate
+	#maxDonate
 
-	constructor() {
+	static TextObject = {
+		DonateButtonText: 'Задонатить',
+		InputLabel: `Введите сумму в $`,
+	}
+
+	static DefaultDonateValues = {
+		min: 1,
+		max: 100,
+	}
+
+	constructor(minDonate, maxDonate) {
+		this.#maxDonate = maxDonate || DonateForm.DefaultDonateValues.max;
+		this.#minDonate = minDonate || DonateForm.DefaultDonateValues.min;
 		this.#containerForm = document.createElement('form')
 	}
 
@@ -12,18 +26,18 @@ export class DonateForm {
 		h1El.textContent = `28$`
 		const labelEl = document.createElement(`label`)
 		labelEl.className = `donate-form__input-label`
-		labelEl.textContent = `Введите сумму в $`
+		labelEl.textContent = DonateForm.TextObject.InputLabel
 		const inputEl = document.createElement(`input`)
 		inputEl.className = `donate-form__donate-input`
 		inputEl.name = `amount`
 		inputEl.type = `number`
-		inputEl.max = `100`
-		inputEl.min = `1`
+		inputEl.max = this.#maxDonate
+		inputEl.min = this.#minDonate
 		inputEl.required = ``
 		const buttonEl = document.createElement(`button`)
 		buttonEl.className = `donate-form__submit-button`
 		buttonEl.type = `submite`
-		buttonEl.textContent = `Задонатить`
+		buttonEl.textContent = DonateForm.TextObject.DonateButtonText
 
 		labelEl.append(inputEl)
 		this.#containerForm.append(h1El, labelEl, buttonEl)
