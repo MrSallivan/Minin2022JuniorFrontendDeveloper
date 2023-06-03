@@ -2,6 +2,7 @@ export class DonateForm {
 	#containerForm
 	#minDonate
 	#maxDonate
+	#totalAmount
 
 	static TextObject = {
 		DonateButtonText: 'Задонатить',
@@ -13,10 +14,11 @@ export class DonateForm {
 		max: 100,
 	}
 
-	constructor(minDonate, maxDonate) {
+	constructor(totalAmount, minDonate, maxDonate) {
 		this.#maxDonate = maxDonate || DonateForm.DefaultDonateValues.max;
 		this.#minDonate = minDonate || DonateForm.DefaultDonateValues.min;
 		this.#containerForm = document.createElement('form')
+		this.#totalAmount = totalAmount
 	}
 
 	render() {

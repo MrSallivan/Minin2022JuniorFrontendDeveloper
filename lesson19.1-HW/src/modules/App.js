@@ -13,9 +13,11 @@ const mockDonates = [
 export default class App {
 	#donateForm
 	#donateList
+
 	constructor() {
-		this.#donateForm = new DonateForm()
-		this.#donateList = new DonateList(mockDonates)
+		this.state = {donates: [], totalAmount: null}
+		this.#donateForm = new DonateForm(this.state.totalAmount)
+		this.#donateList = new DonateList(this.state.donates)
 	}
 
 	run() {
