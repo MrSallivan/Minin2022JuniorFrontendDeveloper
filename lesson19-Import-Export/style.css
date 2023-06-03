@@ -1,0 +1,42 @@
+:root {
+	--main-background: #4666b1;
+	--primary-color: #4666b1;
+	--default-text-color: #ffffff;
+	--donate-item-text-color: #000000;
+	--default-border-color: #ffffff;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	color: var(--default-text-color);
+	background: var(--main-background);
+	box-sizing: border-box;
+	overflow-y: scroll;
+}
+
+.js-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+.main-title {
+	font-size: 48px;
+}
+.js-image {
+}
+.founded-text {
+	font-weight: bold;
+	font-size: 22px;
+}
+.timer-text {
+}
+.today-date {
+}
