@@ -1,36 +1,43 @@
 export class DonateList {
 	#donates
+	#donateItemsHTML
 
-	static textObject = {
-		DonatesList: `Список донатов`
+	static TextObject = {
+		DonatesList: 'Список донатов',
 	}
 
 	constructor(donates) {
-		this.#donates = donates
+		this.#donates = donates;
 	}
 
-	updateDonates(updatedDonates){
-		this.#donates = updatedDonates
+	#renderDonates(container) {
+		this.#donateItemsHTML.innerHTML = '';
+		this.#donates.forEach((donateItem) => {
+			const donateItemHTML = document.createElement('div');
+			donateItemHTML.className = 'donate-item';
+			const creationTime = donateItem.date;
+			donateItemHTML.innerHTML = `${creationTime} - <b>${donateItem.amount}$</b>`;
+			container.append(donateItemHTML);
+		});
+	}
+
+	updateDonates(updatedDonates) {
+		this.#donates = updatedDonates;
+		this.#renderDonates(this.#donateItemsHTML);
 	}
 
 	render() {
+		const donatesContainer = document.createElement('div');
+		donatesContainer.className = 'donates-container';
+		const donatesText = document.createElement('h2');
+		donatesText.className = 'donates-container__title';
+		donatesText.textContent = DonateList.TextObject.DonatesList;
+		this.#donateItemsHTML = document.createElement('div');
+		this.#donateItemsHTML.className = 'donates-container__donates';
 
-		const donatesContainerEl = document.createElement(`div`)
-		donatesContainerEl.className = `donates-container`
-		donatesContainerEl.innerHTML = `
-			<h2 class="donates-container__title">${DonateList.textObject.DonatesList}</h2>
-			<div class="donates-container__donates">
-			</div>
-		`
-		this.#donates.forEach(element => {
-			const amount = element.amount
-			const date = element.date
-			const donate = `<div class="donate-item">${date} - <b>${amount}$</b></div>`
-			donatesContainerEl.insertAdjacentHTML('beforeend', donate)
-		});
+		donatesContainer.append(donatesText, this.#donateItemsHTML);
+		this.#renderDonates(this.#donateItemsHTML);
 
-
-		return donatesContainerEl
-
+		return donatesContainer;
 	}
 }
