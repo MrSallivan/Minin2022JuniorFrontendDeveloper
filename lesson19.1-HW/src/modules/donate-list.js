@@ -9,6 +9,10 @@ export class DonateList {
 		this.#donates = donates
 	}
 
+	updateDonates(updatedDonates){
+		this.#donates = updatedDonates
+	}
+
 	render() {
 
 		const donatesContainerEl = document.createElement(`div`)

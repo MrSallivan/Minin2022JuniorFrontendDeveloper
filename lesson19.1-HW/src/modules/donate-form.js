@@ -21,6 +21,12 @@ export class DonateForm {
 		this.#totalAmount = totalAmount
 	}
 
+	updateTotalAmount(newAmount){
+		const h1El = document.querySelector('#total-amount')
+		h1El.textContent = `${newAmount}$`
+
+	}
+
 	render() {
 		this.#containerForm.className = `donate-form`
 		const h1El = document.createElement(`h1`)

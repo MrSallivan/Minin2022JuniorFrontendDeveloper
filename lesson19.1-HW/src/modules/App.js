@@ -13,17 +13,18 @@ const mockDonates = [
 export default class App {
 	#donateForm
 	#donateList
+	#state
 
 	constructor() {
-		this.state = {donates: [], totalAmount: null}
-		this.#donateForm = new DonateForm(this.state.totalAmount)
-		this.#donateList = new DonateList(this.state.donates)
+		this.#state = { donates: [], totalAmount: 0 }
+		this.#donateForm = new DonateForm(this.#state.totalAmount)
+		this.#donateList = new DonateList(this.#state.donates)
 	}
 
 	run() {
-
-
-		document.body.append(this.#donateForm.render())
-		document.body.append(this.#donateList.render())
+		document.body.append(
+			this.#donateForm.render(),
+			this.#donateList.render()
+		)
 	}
 }
