@@ -1,4 +1,5 @@
-import {Settings as setCurrency} from "../core/constants/settings"
+import { Settings as setCurrency } from "../core/constants/settings"
+import { getFormattedTime } from "./../core/utils/index"
 
 export class DonateForm {
 	#donateForm
@@ -62,7 +63,7 @@ export class DonateForm {
 		const newDonateValue = Number(event.target.amount.value);
 		if (newDonateValue && this.#createNewDonate) {
 			const newDonate = {
-				date: new Date(),
+				date: getFormattedTime(new Date()),
 				amount: newDonateValue,
 			};
 			this.#createNewDonate(newDonate);

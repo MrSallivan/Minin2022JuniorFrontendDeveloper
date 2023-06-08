@@ -1,5 +1,6 @@
 import { Settings as setCurrency } from "../core/constants/settings"
 
+
 export class DonateList {
 	#donates
 	#donateItemsHTML
