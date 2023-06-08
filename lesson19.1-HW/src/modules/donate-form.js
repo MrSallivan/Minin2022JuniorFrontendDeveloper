@@ -1,3 +1,5 @@
+import {Settings as setCurrency} from "../core/constants/settings"
+
 export class DonateForm {
 	#donateForm
 	#totalAmountHTML
@@ -8,7 +10,7 @@ export class DonateForm {
 
 	static TextObject = {
 		DonateButtonText: 'Задонатить',
-		InputLabel: `Введите сумму в $`,
+		InputLabel: `Введите сумму в ${setCurrency.currency}`,
 	}
 
 	static DefaultDonateValues = {
@@ -52,7 +54,7 @@ export class DonateForm {
 	}
 
 	updateTotalAmount(newAmount) {
-		this.#totalAmountHTML.textContent = `${newAmount}$`;
+		this.#totalAmountHTML.textContent = `${newAmount}${setCurrency.currency}`;
 	}
 
 	#onCreateNewDonateSubmit(event) {

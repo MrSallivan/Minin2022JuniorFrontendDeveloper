@@ -1,3 +1,5 @@
+import { Settings as setCurrency } from "../core/constants/settings"
+
 export class DonateList {
 	#donates
 	#donateItemsHTML
@@ -16,7 +18,7 @@ export class DonateList {
 			const donateItemHTML = document.createElement('div');
 			donateItemHTML.className = 'donate-item';
 			const creationTime = donateItem.date;
-			donateItemHTML.innerHTML = `${creationTime} - <b>${donateItem.amount}$</b>`;
+			donateItemHTML.innerHTML = `${creationTime} - <b>${donateItem.amount}${setCurrency.currency}</b>`;
 			container.append(donateItemHTML);
 		});
 	}
