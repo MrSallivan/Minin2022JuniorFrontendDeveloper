@@ -1,6 +1,39 @@
-import React from "react"
+import React, { useState } from "react"
 
 const Counter = () => {
-	return <h1>Counter</h1>
+
+	let [count, setCount] = useState(0)
+	const [tags, setTags] = useState(['tag1', 'tag2', 'tag3'])
+
+	const formatCount = () => {
+		return count === 0 ? 'empty' : count
+	}
+	const getBadgeClasses = () => {
+		let classes = 'badge m-2 '
+		classes += count === 0 ? 'bg-warning' : 'bg-primary'
+		return classes
+	}
+	const handleIncrement = () => {
+		setCount((prevState) => prevState + 1)
+	}
+	const handleDecrement = () => {
+		setCount(count - 1)
+	}
+
+	const handleTagChange = () => {
+		setTags(['tag4', 'tag7'])
+	}
+
+	return (
+		<React.Fragment>
+			<ul>{
+				tags.map(tag => <li key={tag} className="btn btn-primary btn-sm m-2" onClick={handleTagChange}>{tag}</li>)
+			}
+			</ul>
+			<button className="btn btn-primary btn-sm m-2" onClick={handleDecrement}>-</button>
+			<span className={getBadgeClasses()}>{formatCount()}</span>
+			<button className="btn btn-primary btn-sm m-2" onClick={handleIncrement}>+</button>
+		</React.Fragment>
+	)
 }
 export default Counter
