@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import Counter from "./components/counter.jsx"
+import CounterMy from './components/CounterMy'
 
 function App() {
 	return (
-		
-			<Counter />
-		
+
+	<CounterMy/>
 		
 	)
 }
