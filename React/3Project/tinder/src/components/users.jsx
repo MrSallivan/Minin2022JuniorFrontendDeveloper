@@ -1,9 +1,9 @@
 import React from "react"
-import API from "../api"
+import api from "../api"
 
 const Users = () => {
-	console.log(API.users.fetchAll());
-return <h1>Users</h1>
+	console.log(api.users.fetchAll());
+	return <h1>drom .ru</h1>
 }
 
 export default Users
