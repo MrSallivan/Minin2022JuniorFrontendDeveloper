@@ -1,11 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import CounterMy from './components/CounterMy'
+import CountersList from './components/countersList';
+
 
 function App() {
 	return (
+		<>
+			
+			<CountersList />
 
-	<CounterMy/>
-		
+		</>
+
 	)
 }
 
