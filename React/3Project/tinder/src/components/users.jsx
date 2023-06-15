@@ -4,12 +4,29 @@ import api from "../api"
 const Users = () => {
 
 	const [users, setUsers] = useState(api.users.fetchAll())
-	const handleDelete = (userId) => { }
-	const renderPhrase = (number) => { }
+	const handleDelete = (userId) => {
+		setUsers((prevState) => prevState.filter(item => item._id !== userId))
+	}
+	const renderPhrase = (number) => { 
+const lastOne = Number(number.toString().slice(-1))
+		if (number > 4 && number < 15) {
+			return `человек тусанет`
+		}
+		if([2,3,4].indexOf(lastOne) >= 0){
+			return `человека тусанут`
+		}
+		return `человек тусанет`
 
+	}
 	return (
 		<>
-			<span className={"badge bg-" + (users.length > 0 ? "primary" : "danger")}>13 дебилов в сети</span>
+			<h1>
+				<span className={"badge bg-" + (users.length > 0 ? "primary" : "danger")}>
+					{users.length > 0 ? `${users.length} ${renderPhrase(users.length)} с тобой сегодня` : "Никто с тобой не тусанет!"}
+				</span>
+			</h1>
+			
+			{users.length > 0 && 
 			<table className="table">
 				<thead>
 					<tr>
@@ -29,11 +46,11 @@ const Users = () => {
 							<td>{user.profession.name}</td>
 							<td>{user.completedMeetings}</td>
 							<td>{user.rate}</td>
-							<td><button type="button" className="btn btn-danger">delete</button></td>
+							<td><button type="button" className="btn btn-danger" onClick={() => handleDelete(user._id)}>delete</button></td>
 						</tr>
 					))}
 				</tbody>
-			</table>
+				</table>}
 		</>
 	)
 }
