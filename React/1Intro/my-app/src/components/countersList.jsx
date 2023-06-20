@@ -21,14 +21,14 @@ const CountersList = () => {
 	}
 
 	const handleIncrement = (hid) => {
-		let count = counters[hid]
-		count.value += 1
-		
+		const newCount = [...counters]
+		newCount.forEach(count => count.id === hid ? count.value++ : undefined)
+		setCounters(newCount)
 	}
 	const handleDecrement = (hid) => {
-		let count = counters[hid]
-		count.value -= 1
-		
+		const newCount = [...counters]
+		newCount.forEach(count => count.id === hid ? count.value-- : undefined)
+		setCounters(newCount)
 	}
 
 	return (
