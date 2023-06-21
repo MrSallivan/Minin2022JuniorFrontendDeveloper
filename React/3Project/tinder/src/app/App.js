@@ -4,10 +4,14 @@ import Users from "./components/users"
 import SearchStatus from './components/searchStatus'
 
 const App = () => {
+
+	const [users, setUsers] = useState(api.users.fetchAll())
+
+
 	return (
 		<>
-			<SearchStatus/>
-			<Users />
+			<SearchStatus length={users.length} />
+			<Users onDelete={handleDelete} onToggleBookMark={handleToggleBookMark} users={users} />
 		</>
 	)
 }
