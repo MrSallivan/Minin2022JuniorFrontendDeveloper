@@ -6,7 +6,20 @@ import SearchStatus from './components/searchStatus'
 const App = () => {
 
 	const [users, setUsers] = useState(api.users.fetchAll())
+	console.log(users);
 
+	const handleDelete = (userId) => {
+		setUsers(users.filter((user) => user._id !== userId))
+	}
+
+	const handleToggleBookMark = (id) => {
+		setUsers(users.map((user) => {
+			if (user._id === id) {
+				return { ...user, bookmark: !user.bookmark }
+			}
+			return user
+		}))
+	}
 
 	return (
 		<>
