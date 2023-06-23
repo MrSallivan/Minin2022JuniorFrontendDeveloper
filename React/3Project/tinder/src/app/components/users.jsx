@@ -2,12 +2,6 @@ import React from "react"
 import User from './user'
 
 const Users = ({users, ...rest}) => {
-
-	
-	const handleDelete = (userId) => {
-		setUsers((prevState) => prevState.filter(item => item._id !== userId))
-	}
-	
 	return (
 		<>
 			{users.length > 0 && (
