@@ -12,30 +12,40 @@ const Users = ({ users, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
   const [selectedProf, setSelectedProf] = useState()
+
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex)
   }
+
   const handleProfessionSelect = (item) => {
     setSelectedProf(item)
   }
+
   useEffect(() => {
     api.professions.fetchAll().then((date) => {
       setProfessions(date)
     })
   }, [])
 
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [selectedProf])
+
   const filteredUsers = selectedProf
-    ? users.filter((user) => user.profession === selectedProf)
+    ? users.filter((user) =>JSON.stringify(user.profession) === JSON.stringify(selectedProf))
     : users
+
   const count = filteredUsers.length
   const userCrop = paginate(filteredUsers, currentPage, pageSize)
+
   const clearFilter = () => {
     setSelectedProf(undefined)
   }
+
   return (
     <div className="d-flex">
       {professions && (
-        <div className="d-flex flex-colomn flex-shrink-0 p-3">
+        <div className="d-flex flex-column flex-shrink-0 p-3">
           <GroupList
             items={professions}
             onItemSelect={handleProfessionSelect}
@@ -47,7 +57,7 @@ const Users = ({ users, ...rest }) => {
         </div>
       )}
 
-      <div className="div-flex flex-column">
+      <div className="d-flex flex-column">
         <SearchStatus length={count} />
         {count > 0 && (
           <table className="table">
