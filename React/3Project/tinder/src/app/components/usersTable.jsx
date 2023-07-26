@@ -5,7 +5,13 @@ import TableHeader from "./tableHeader"
 import TableBody from "./tableBody"
 import BookMark from "./bookmark"
 
-const UsersTable = ({ users, onSort, selectedSort, onToggleBookMark }) => {
+const UsersTable = ({
+  users,
+  onSort,
+  selectedSort,
+  onToggleBookMark,
+  onDelete
+}) => {
   const columns = {
     name: { path: "name", name: "Имя" },
     qualities: { name: "Качества" },
@@ -15,14 +21,20 @@ const UsersTable = ({ users, onSort, selectedSort, onToggleBookMark }) => {
     bookmark: {
       path: "bookmark",
       name: "Избранное",
-      component: (user) => {
+      component: (user) => (
         <BookMark
           status={user.bookmark}
           onClick={() => onToggleBookMark(user._id)}
         />
-      }
+      )
     },
-    delete: { component: "delete" }
+    delete: {
+      component: (user) => (
+        <button onClick={() => onDelete(user._id)} className="btn btn-danger">
+          delete
+        </button>
+      )
+    }
   }
   return (
     <table className="table">
@@ -35,6 +47,7 @@ UsersTable.propTypes = {
   users: PropTypes.array.isRequired,
   onSort: PropTypes.func.isRequired,
   selectedSort: PropTypes.object.isRequired,
-  onToggleBookMark: PropTypes.func.isRequired
+  onToggleBookMark: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
 }
 export default UsersTable
