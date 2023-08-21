@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
 import "bootstrap/dist/css/bootstrap.css"
-import Users from "./app/components/users"
+import App from "./App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<Users />)
+root.render(<App />)
