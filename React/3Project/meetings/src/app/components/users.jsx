@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import User from "./user"
 import Pagination from "./pagination"
 import paginate from "../utils/paginate"
@@ -35,7 +36,7 @@ const Users = ({ users, ...rest }) => {
           </tbody>
         </table>
       )}
-			
+
       <Pagination
         itemsCount={count}
         pageSize={pageSize}
@@ -46,4 +47,7 @@ const Users = ({ users, ...rest }) => {
   )
 }
 
+Users.propTypes = {
+  users: PropTypes.array
+}
 export default Users
