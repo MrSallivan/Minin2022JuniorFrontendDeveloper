@@ -10,9 +10,10 @@ import API from "../api"
 const Users = ({ users, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
+	const [selectedProf, setSelectedProf] = useState()
 
-  const handleProfessionSelect = (params) => {
-    console.log(params)
+  const handleProfessionSelect = (item) => {
+		setSelectedProf(item)
   }
   const count = users.length
   const pageSize = 4
@@ -24,13 +25,13 @@ const Users = ({ users, ...rest }) => {
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex)
   }
-
-  const userCrop = paginate(users, currentPage, pageSize)
+	const filteredUsers = selectedProf ? users.filter(user => user.profession === selectedProf) : users
+  const userCrop = paginate(filteredUsers, currentPage, pageSize)
 
   return (
     <>
       {professions && (
-      <GroupList items={professions} onItemSelect={handleProfessionSelect} />
+        <GroupList items={professions} onItemSelect={handleProfessionSelect} selectedItem={selectedProf}/>
       )}
       {count > 0 && (
         <table className="table">
