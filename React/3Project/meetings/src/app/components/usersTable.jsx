@@ -7,12 +7,22 @@ const UserTable = ({ users, ...rest }) => {
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">Имя</th>
+          <th onClick={() => onSort("name")} scope="col">
+            Имя
+          </th>
           <th scope="col">Качества</th>
-          <th scope="col">Провфессия</th>
-          <th scope="col">Встретился, раз</th>
-          <th scope="col">Оценка</th>
-          <th scope="col">Избранное</th>
+          <th onClick={() => onSort("profession.name")} scope="col">
+            Провфессия
+          </th>
+          <th onClick={() => onSort("completedMeetings")} scope="col">
+            Встретился, раз
+          </th>
+          <th onClick={() => onSort("rate")} scope="col">
+            Оценка
+          </th>
+          <th onClick={() => onSort("bookmark")} scope="col">
+            Избранное
+          </th>
           <th />
         </tr>
       </thead>
