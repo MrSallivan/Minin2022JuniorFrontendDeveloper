@@ -1,11 +1,12 @@
 import React from "react"
+import PropTypes from "prop-types"
 
-const TableHeader = () => {
+const TableHeader = ({ onSort, selectedSort, columns }) => {
   const handleSort = (item) => {
-    if (currentSort.iter === item) {
+    if (selectedSort.iter === item) {
       onSort({
-        ...currentSort,
-        order: currentSort.order === "asc" ? "desc" : "asc"
+        ...selectedSort,
+        order: selectedSort.order === "asc" ? "desc" : "asc"
       })
     } else {
       onSort({ iter: item, order: "asc" })
@@ -15,34 +16,29 @@ const TableHeader = () => {
   return (
     <thead>
       <tr>
-        <th onClick={() => handleSort("name")} scope="col" role="button">
-          Имя
-        </th>
-        <th scope="col">Качества</th>
-        <th
-          onClick={() => handleSort("profession.name")}
-          scope="col"
-          role="button"
-        >
-          Провфессия
-        </th>
-        <th
-          onClick={() => handleSort("completedMeetings")}
-          scope="col"
-          role="button"
-        >
-          Встретился, раз
-        </th>
-        <th onClick={() => handleSort("rate")} scope="col" role="button">
-          Оценка
-        </th>
-        <th onClick={() => handleSort("bookmark")} scope="col" role="button">
-          Избранное
-        </th>
+        {Object.keys(columns).map((column) => (
+          <th
+            key={column}
+            onClick={
+              columns[column].iter
+                ? () => handleSort(columns[column].iter)
+                : undefined
+            }
+            scope="col"
+            role={columns[column].iter ? "button" : ""}
+          >
+            {columns[column].name}
+          </th>
+        ))}
         <th />
       </tr>
     </thead>
   )
 }
 
+TableHeader.propTypes = {
+  selectedSort: PropTypes.object.isRequired,
+  onSort: PropTypes.func.isRequired,
+  columns: PropTypes.object.isRequired
+}
 export default TableHeader

@@ -1,4 +1,6 @@
 import CountersList from './components/countersList';
+import CountButn from './components/CountButn';
+import './css/main.css'
 
 
 function App() {
@@ -6,6 +8,7 @@ function App() {
 		<>
 			
 			<CountersList />
+			<CountButn />
 
 		</>
 
