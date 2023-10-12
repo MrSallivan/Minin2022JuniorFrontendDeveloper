@@ -18,9 +18,7 @@ const User = ({
     <tr>
       <td>{name}</td>
       <td>
-        {qualities.map((qual) => (
-          <Qualitie key={qual._id} {...qual} />
-        ))}
+        
       </td>
       <td>{profession.name}</td>
       <td>{completedMeetings}</td>
