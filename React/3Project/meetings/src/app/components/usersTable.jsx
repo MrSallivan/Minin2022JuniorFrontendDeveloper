@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
-import BookMark from "./bookmark";
-import QualitiesList from "./qualitiesList";
-import Table from "./table";
-import { Link } from "react-router-dom";
+import BookMark from "./bookmark"
+import QualitiesList from "./qualitiesList"
+import Table from "./table"
+import { Link } from "react-router-dom"
 
 const UserTable = ({
     users,
@@ -52,7 +52,7 @@ const UserTable = ({
                 </button>
             )
         }
-    };
+    }
     return (
         <Table
             onSort={onSort}
@@ -60,8 +60,8 @@ const UserTable = ({
             columns={columns}
             data={users}
         />
-    );
-};
+    )
+}
 
 UserTable.propTypes = {
     users: PropTypes.array.isRequired,
@@ -69,6 +69,6 @@ UserTable.propTypes = {
     selectedSort: PropTypes.object.isRequired,
     onToggleBookMark: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired
-};
+}
 
-export default UserTable;
+export default UserTable

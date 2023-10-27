@@ -1,10 +1,10 @@
-import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React from "react"
+import { Route, Switch, Redirect } from "react-router-dom"
 
-import Users from "./layouts/users";
-import Login from "./layouts/login";
-import Main from "./layouts/main";
-import NavBar from "./components/navBar";
+import Users from "./layouts/users"
+import Login from "./layouts/login"
+import Main from "./layouts/main"
+import NavBar from "./components/navBar"
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
                 <Redirect to="/" />
             </Switch>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App

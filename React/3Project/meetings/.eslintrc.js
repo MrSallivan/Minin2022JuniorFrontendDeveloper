@@ -13,7 +13,7 @@ module.exports = {
     },
     plugins: ["react"],
     rules: {
-        semi: [2, "always"],
+        semi: ["error", "never"],
         indent: [0, 4],
         "space-before-function-paren": [
             "error",
@@ -27,4 +27,4 @@ module.exports = {
             }
         ]
     }
-};
+}
