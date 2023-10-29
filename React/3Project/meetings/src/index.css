@@ -9,6 +9,10 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+.mainform {
+	max-width: max-content;
+	margin: 0 auto;
+}
 .alert.valid-alert {
 	max-width: max-content;
 	padding: 0 5px;

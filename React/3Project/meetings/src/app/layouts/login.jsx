@@ -12,7 +12,8 @@ const Login = () => {
 
   const validatorConfig = {
     email: {
-      isRequared: { message: "Электронная почта обязательна для заполнения" }
+      isRequared: { message: "Электронная почта обязательна для заполнения" },
+      isEmail: { message: "Email введен не корректно" }
     },
     password: {
       isRequared: { message: "Электронная почта обязательна для заполнения" }
@@ -37,7 +38,7 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleSubmite}>
+    <form onSubmit={handleSubmite} className="mainform">
       <TextField
         label="E-mail"
         name="email"
